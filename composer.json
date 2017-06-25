@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "InFog\\": "src/"
+            "InFog\\UsedFilesMapper\\": "src/InFog/UsedFilesMapper/"
         }
     },
     "require": {}

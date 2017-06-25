@@ -9,7 +9,7 @@ class FilesMapper
     public static function register($outputFile)
     {
         self::$oFile = $outputFile;
-        register_shutdown_function('UsedFilesMapper::shutdown');
+        register_shutdown_function('InFog\UsedFilesMapper\FilesMapper::shutdown');
     }
 
     public static function shutdown()
