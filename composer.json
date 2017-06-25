@@ -2,13 +2,18 @@
     "name": "infog/used_files_mapper",
     "description": "Small library to help debugging apps by logging the used php files",
     "type": "library",
-    "license": "GPL-v3",
+    "license": "GPL3",
     "authors": [
         {
             "name": "Evaldo Junior",
             "email": "evaldojuniorbento@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "InFog\\": "src/"
+        }
+    },
     "require": {}
 }
