@@ -2,7 +2,7 @@
     "name": "infog/used_files_mapper",
     "description": "Small library to help debugging apps by logging the used php files",
     "type": "library",
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Evaldo Junior",
