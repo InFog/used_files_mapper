@@ -15,8 +15,30 @@ use InFog\UsedFilesMapper\FilesMapper;
 FilesMapper::register('/tmp/usedfiles.txt');
 ```
 
-After running your application you will see a list of used files on the
+After running your application you will see a list of used files in the
 log file passed to the register method.
+
+## Keeping the log
+
+Do you want to use the heatmap command to generate a nice HTML page containing
+a graphical representation of the used files? Then you should keep the used
+files in the log file using the `MODE_APPEND` option:
+
+```php
+<?php
+
+use InFog\UsedFilesMapper\FilesMapper;
+
+FilesMapper::register('/tmp/usedfiles.txt', FilesMapper::MODE_APPEND);
+```
+
+## Generating the heatmap
+
+TODO
+
+## TODO
+
+* Generate the heatmap from the logfile
 
 ## License
 

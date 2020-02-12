@@ -4,11 +4,17 @@ namespace InFog\UsedFilesMapper;
 
 class FilesMapper
 {
-    private static $oFile = '';
+    const MODE_REPLACE = 0;
+    const MODE_APPEND = FILE_APPEND;
 
-    public static function register($outputFile)
+    private static $oFile = '';
+    private static $mode = FilesMapper::MODE_REPLACE;
+
+    public static function register($outputFile, $mode = FilesMapper::MODE_REPLACE)
     {
         self::$oFile = $outputFile;
+        self::$mode = $mode;
+
         register_shutdown_function('InFog\UsedFilesMapper\FilesMapper::shutdown');
     }
 
@@ -21,6 +27,6 @@ class FilesMapper
             $output .= $f . PHP_EOL;
         }
 
-        file_put_contents(self::$oFile, $output);
+        file_put_contents(self::$oFile, $output, self::$mode);
     }
 }
