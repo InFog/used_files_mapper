@@ -1,0 +1,39 @@
+#!/usr/bin/env php
+<?php
+
+$autoloadLocation = array(
+    __DIR__ . '/vendor/autoload.php',
+    __DIR__ . '/../../../autoload.php',
+);
+
+$autoloadFound = false;
+
+foreach ($autoloadLocation as $a) {
+    if (is_file($a)) {
+        require_once $a;
+        $autoloadFound = true;
+        break;
+    }
+}
+
+if (! $autoloadFound) {
+    die('Autoload file not found! Aborting. Did you run "composer install"?');
+}
+
+use InFog\UsedFilesMapper\Commands\ReportCommand;
+
+$path = $argv[1];
+$basePath = $argv[2];
+$logsFile = $argv[3];
+$outputFile = isset($argv[4]) ? $argv[4] : '';
+$ignoreVendor = true; //$argv[5];
+
+$command = new ReportCommand(
+    $path,
+    $basePath,
+    $logsFile,
+    $outputFile,
+    $ignoreVendor
+);
+
+return $command->run();

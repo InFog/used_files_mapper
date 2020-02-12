@@ -12,7 +12,7 @@ output to:
 
 use InFog\UsedFilesMapper\FilesMapper;
 
-FilesMapper::register('/tmp/usedfiles.txt');
+FilesMapper::register('/tmp/usedfiles.log');
 ```
 
 After running your application you will see a list of used files in the
@@ -29,16 +29,27 @@ files in the log file using the `MODE_APPEND` option:
 
 use InFog\UsedFilesMapper\FilesMapper;
 
-FilesMapper::register('/tmp/usedfiles.txt', FilesMapper::MODE_APPEND);
+FilesMapper::register('/tmp/usedfiles.log', FilesMapper::MODE_APPEND);
 ```
 
 ## Generating the heatmap
 
-TODO
+In order to generate the report you will need the log file and the application's
+code base.
 
-## TODO
+Here is an example:
 
-* Generate the heatmap from the logfile
+* The files on the server are under `/app/website`
+* After collecting the usage for some time you downloaded the report into
+  `~/Desktop/usedfiles.log`
+* The codebase is under `~/Projects/website`
+
+The report can be generated using the following commands:
+
+```bash
+cd ~/Projects/website
+./vendor/infog/used_files_mapper/bin/report . /app/website/ ~/Desktop/usedfiles.log /tmp/report.html
+```
 
 ## License
 
