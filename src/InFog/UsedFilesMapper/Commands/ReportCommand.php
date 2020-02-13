@@ -60,11 +60,11 @@ class ReportCommand
         while (($fileName = fgets($handle)) !== false) {
             $fileName = trim($fileName);
 
-            if (strpos($fileName, $this->basePath) === 0) {
-                $fileName = substr($fileName, $basePathLength);
+            if (strpos($fileName, $this->basePath) !== 0) {
+                continue;
             }
 
-            $filename = trim($fileName, '/');
+            $fileName = trim(substr($fileName, $basePathLength), '/');
 
             if ($this->ignoreVendor && strpos($fileName, 'vendor/') === 0) {
                 continue;
