@@ -2,6 +2,15 @@
 
 This library will log the `php` files used by your PHP application.
 
+The idea here is to understand which parts of your code are used and which are
+not, so it is safer to remove them.
+
+This library can be specially useful when upgrading PHP versions or even to
+learn more about a new codebase.
+
+It works by having a log of the used files and then making a usage report out
+of those files.
+
 ## Usage
 
 Simply register the mapper in your index file passing a filename to write the
@@ -20,9 +29,9 @@ log file passed to the register method.
 
 ## Keeping the log
 
-Do you want to use the heatmap command to generate a nice HTML page containing
-a graphical representation of the used files? Then you should keep the used
-files in the log file using the `MODE_APPEND` option:
+Do you want to use the report command to generate a nice HTML page containing
+a list of the used files? Then you should keep the used files in the log file
+using the `MODE_APPEND` option:
 
 ```php
 <?php
