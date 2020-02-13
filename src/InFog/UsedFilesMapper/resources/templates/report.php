@@ -40,7 +40,7 @@
 
             <hr />
 
-            <h2 class="subtitle">Unused files: <span class="tag is-danger is-light"><?php echo $totalAllFiles; ?></span></h2>
+            <h2 class="subtitle">Unused files: <span class="tag is-danger is-light"><?php echo $totalUnusedFiles; ?></span></h2>
 
             <table class="table is-striped is-hoverable is-fullwidth">
                 <thead>
@@ -49,7 +49,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($allFiles as $fileName) : ?>
+                    <?php foreach ($unusedFiles as $fileName) : ?>
                         <tr>
                             <td><?php echo $fileName; ?></td>
                         </tr>

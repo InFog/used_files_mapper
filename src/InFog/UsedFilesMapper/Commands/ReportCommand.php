@@ -108,12 +108,12 @@ class ReportCommand
         return $allFiles;
     }
 
-    public function generateReport($allFiles, $usedFiles)
+    public function generateReport($unusedFiles, $usedFiles)
     {
         $totalUsedFiles = count($usedFiles);
-        $totalAllFiles = count($allFiles);
+        $totalUnusedFiles = count($unusedFiles);
+        $totalAllFiles = $totalUsedFiles + $totalUnusedFiles;
 
-        $totalFiles = $totalUsedFiles + $totalAllFiles;
         $usagePercentage = number_format(($totalUsedFiles * 100) / $totalAllFiles, 2);
 
         ob_start();
