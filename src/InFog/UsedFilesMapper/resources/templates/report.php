@@ -13,6 +13,10 @@
             <h1 class="title">Report: Used PHP files</h1>
 
             <p>
+                Report generated on <?php echo $generatedOn; ?>
+            </p>
+
+            <p>
                 The codebase contains <?php echo $totalAllFiles; ?> files.<br />
                 <?php echo $usagePercentage; ?>% of the files are used.
             </p>
@@ -21,7 +25,7 @@
 
             <h2 class="subtitle">Used files: <span class="tag is-success is-light"><?php echo $totalUsedFiles; ?></span></h2>
 
-            <table class="table is-striped is-hoverable is-fullwidth">
+            <table class="table is-hoverable is-fullwidth">
                 <thead>
                     <tr>
                         <th>File</th>
@@ -30,7 +34,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($usedFiles as $fileName => $usage) : ?>
-                        <tr>
+                        <tr style="background-color: rgb(<?php echo $backgroundColors[$usage]; ?>, 255, 120);">
                             <td><?php echo $fileName; ?></td>
                             <td><?php echo $usage; ?></td>
                         </tr>

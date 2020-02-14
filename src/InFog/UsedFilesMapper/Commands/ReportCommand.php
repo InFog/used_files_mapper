@@ -66,6 +66,10 @@ class ReportCommand
 
             $fileName = trim(substr($fileName, $basePathLength), '/');
 
+            if (strpos($fileName, $this->basePath) !== false) {
+                continue;
+            }
+
             if ($this->ignoreVendor && strpos($fileName, 'vendor/') === 0) {
                 continue;
             }
@@ -113,6 +117,15 @@ class ReportCommand
         $totalUsedFiles = count($usedFiles);
         $totalUnusedFiles = count($unusedFiles);
         $totalAllFiles = $totalUsedFiles + $totalUnusedFiles;
+        $generatedOn = date('Y-m-d H:i:s');
+
+        $highestUsage = reset($usedFiles);
+
+        $backgroundColors = array();
+
+        foreach ($usedFiles as $usage) {
+            $backgroundColors[$usage] = (((int) (($usage * 255) / $highestUsage)) - 255) * -1;
+        }
 
         $usagePercentage = number_format(($totalUsedFiles * 100) / $totalAllFiles, 2);
 
