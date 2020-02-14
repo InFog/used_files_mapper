@@ -28,6 +28,12 @@ class ReportCommand
         $usedFiles = $this->fetchUsedFiles();
         $allFiles = $this->fetchAllFiles();
 
+        foreach ($usedFiles as $fileName => $usage) {
+            if (! in_array($fileName, $allFiles)) {
+                unset($usedFiles[$fileName]);
+            }
+        }
+
         foreach ($allFiles as $k => $fileName) {
             if (isset($usedFiles[$fileName])) {
                 unset($allFiles[$k]);
